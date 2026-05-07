@@ -1,0 +1,17 @@
+{
+  "name": "spendscan-ai",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --testPathPattern=tests/",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watch --testPathPattern=tests/"
+  },
+  "jest": {
+    "transform": {},
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
