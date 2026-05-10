@@ -90,8 +90,6 @@ function evaluateTool(entry) {
   const recommendations = [];
   let potentialSaving = 0;
 
-  const expectedSpend = plan?.price ? plan.price * seats : monthlySpend;
-
   // --- Cursor evaluations ---
   if (toolId === "cursor") {
     if (planId === "business" && seats <= 2) {
@@ -180,10 +178,10 @@ function evaluateTool(entry) {
       recommendations.push({
         type: "switch",
         action: "Consider Cursor or Windsurf for coding",
-        saving: 5,
-        reason: `ChatGPT Plus ($20/mo) for coding lacks IDE integration. Windsurf Free or Cursor Hobby ($0) gives inline code suggestions directly in your editor.`,
+        saving: 20 * seats,
+        reason: `ChatGPT Plus ($20/mo) for coding lacks IDE integration. Windsurf Free or Cursor Hobby ($0) gives inline code suggestions directly in your editor — saving $${20 * seats}/mo.`,
       });
-      potentialSaving += 5;
+      potentialSaving += 20 * seats;
     }
     if (planId === "team" && seats <= 2) {
       recommendations.push({
@@ -290,11 +288,15 @@ function detectRedundancy(entries) {
   }
 
   if (hasCursor && hasCopilot) {
+    // Use plan price * seats for accurate saving (not user-entered spend which may include overrides)
+    const copilotTool = TOOLS["github_copilot"];
+    const copilotPlanPrice = copilotTool?.plans[hasCopilot.planId]?.price ?? 0;
+    const copilotSaving = copilotPlanPrice * (hasCopilot.seats || 1);
     warnings.push({
       type: "redundancy",
       tools: ["Cursor", "GitHub Copilot"],
-      saving: hasCopilot.monthlySpend,
-      reason: `Cursor includes Claude/GPT-4 code completion built-in. GitHub Copilot alongside it is largely redundant. Consider cancelling Copilot and saving $${hasCopilot.monthlySpend}/mo.`,
+      saving: copilotSaving,
+      reason: `Cursor includes Claude/GPT-4 code completion built-in. GitHub Copilot alongside it is largely redundant. Consider cancelling Copilot and saving ~$${copilotSaving}/mo.`,
     });
   }
 
@@ -327,9 +329,12 @@ export function runAudit(toolEntries, teamSize) {
 
   const redundancyWarnings = detectRedundancy(activeEntries);
 
-  const redundancySavings = redundancyWarnings.reduce((sum, w) => sum + (w.saving || 0), 0);
+  // NOTE: Do NOT add redundancySavings on top of toolSavings — the individual tool
+  // evaluations already count plan-level savings. Redundancy warnings are cross-tool
+  // context only; their savings are surfaced in the UI separately to avoid double-counting.
   const toolSavings = toolResults.reduce((sum, r) => sum + r.potentialMonthlySaving, 0);
-  const totalMonthlySavings = toolSavings + redundancySavings;
+  const redundancyOnlySavings = redundancyWarnings.reduce((sum, w) => sum + (w.saving || 0), 0);
+  const totalMonthlySavings = toolSavings + redundancyOnlySavings;
   const totalAnnualSavings = totalMonthlySavings * 12;
   const totalCurrentSpend = activeEntries.reduce((sum, e) => sum + (e.monthlySpend || 0), 0);
 
@@ -338,8 +343,8 @@ export function runAudit(toolEntries, teamSize) {
     : 0;
 
   let verdict = "optimal";
-  if (totalMonthlySavings >= 500) verdict = "high-savings";
-  else if (totalMonthlySavings >= 100) verdict = "medium-savings";
+  if (totalMonthlySavings >= 50) verdict = "high-savings";   // Show Credex CTA
+  else if (totalMonthlySavings >= 20) verdict = "medium-savings";
   else if (totalMonthlySavings > 0) verdict = "low-savings";
 
   return {
