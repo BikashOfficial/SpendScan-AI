@@ -24,6 +24,7 @@ export default function ResultsPage() {
   const [expanded, setExpanded] = useState({});
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (!auditResult) { navigate("/audit"); return; }
     fetchAiSummary();
   }, [auditResult]);

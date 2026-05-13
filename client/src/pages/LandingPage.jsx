@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Zap, Shield, TrendingDown, Users } from "lucide-react";
+import { ArrowRight, Zap, Shield, TrendingDown, Users, ExternalLink } from "lucide-react";
 import "./LandingPage.css";
 
 export default function LandingPage() {
@@ -139,16 +139,68 @@ export default function LandingPage() {
 
       {/* ── Footer ─────────────────────────────────────── */}
       <footer className="lp-footer">
-        <div className="container lp-footer-inner">
-          <a href="/" className="logo lp-footer-logo">
-            <span className="logo-dot" />
-            SpendScan AI
-          </a>
-          <p className="lp-footer-copy">
-            A free tool by{" "}
-            <a href="https://credex.rocks" className="lp-footer-link">Credex</a>
-            {" "}· Discounted AI infrastructure credits
-          </p>
+        <div className="container">
+
+          {/* Top row — columns */}
+          <div className="lp-footer-cols">
+
+            {/* Brand column */}
+            <div className="lp-footer-brand">
+              <a href="/" className="logo lp-footer-logo">
+                <span className="logo-dot" />
+                SpendScan AI
+              </a>
+              <p className="lp-footer-tagline">
+                Find out if your team is overpaying for AI tools.
+                Free audit, no login, results in seconds.
+              </p>
+              
+            </div>
+
+            {/* Product links */}
+            <div className="lp-footer-col">
+              <p className="lp-footer-col-title">Product</p>
+              <ul className="lp-footer-links">
+                <li><Link to="/audit">Run Free Audit</Link></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#">Tools We Analyze</a></li>
+              </ul>
+            </div>
+
+            {/* Company links */}
+            <div className="lp-footer-col">
+              <p className="lp-footer-col-title">Company</p>
+              <ul className="lp-footer-links">
+                <li>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    SpendScan
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          {/* Bottom bar */}
+          <div className="lp-footer-bottom">
+            <p className="lp-footer-legal">
+              © {new Date().getFullYear()} SpendScan AI . All rights reserved.
+            </p>
+            <p className="lp-footer-legal">
+              Pricing data sourced from official vendor pages. Results are estimates.
+            </p>
+          </div>
+
         </div>
       </footer>
 
