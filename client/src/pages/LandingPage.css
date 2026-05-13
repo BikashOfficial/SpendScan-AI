@@ -1,0 +1,369 @@
+/* ═══════════════════════════════════════════════
+   LandingPage.css — Responsive styles
+   Breakpoints:
+     Mobile:  < 480px
+     Tablet:  480px – 768px
+     Desktop: > 768px
+═══════════════════════════════════════════════ */
+
+/* ── Hero ─────────────────────────────────────── */
+.lp-hero {
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-hero-orb {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 229, 160, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.lp-hero-inner {
+  text-align: center;
+  position: relative;
+}
+
+.lp-hero-badge {
+  margin-bottom: 24px;
+}
+
+.lp-hero-title {
+  font-size: clamp(36px, 7vw, 80px);
+  margin: 0 auto 24px;
+  max-width: 800px;
+}
+
+.lp-hero-sub {
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--text2);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+.lp-hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.lp-hero-proof {
+  margin-top: 32px;
+  color: var(--text3);
+  font-size: 14px;
+}
+
+/* ── Stats ────────────────────────────────────── */
+.lp-stats {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.lp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+.lp-stat-value {
+  font-size: clamp(28px, 5vw, 36px);
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.lp-stat-label {
+  font-weight: 600;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.lp-stat-sub {
+  font-size: 13px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+/* ── How It Works ─────────────────────────────── */
+.lp-how {
+  padding: 100px 0;
+}
+
+.lp-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.lp-section-title {
+  font-size: clamp(24px, 4vw, 48px);
+  margin-bottom: 12px;
+}
+
+.lp-section-sub {
+  color: var(--text2);
+  font-size: clamp(15px, 2vw, 18px);
+}
+
+.lp-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.lp-step-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-step-num {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 48px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.lp-step-icon {
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.lp-step-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.lp-step-desc {
+  color: var(--text2);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ── Tools ────────────────────────────────────── */
+.lp-tools {
+  padding: 60px 0;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+
+.lp-tools-inner {
+  text-align: center;
+}
+
+.lp-tools-label {
+  color: var(--text3);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.lp-tools-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ── Final CTA ────────────────────────────────── */
+.lp-cta {
+  padding: 100px 0;
+}
+
+.lp-cta-inner {
+  text-align: center;
+}
+
+.lp-cta-title {
+  font-size: clamp(24px, 4vw, 52px);
+  margin-bottom: 16px;
+}
+
+.lp-cta-sub {
+  color: var(--text2);
+  font-size: clamp(15px, 2vw, 18px);
+  margin-bottom: 36px;
+}
+
+/* ── Footer ───────────────────────────────────── */
+.lp-footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+}
+
+.lp-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lp-footer-logo {
+  font-size: 16px;
+}
+
+.lp-footer-copy {
+  color: var(--text3);
+  font-size: 13px;
+}
+
+.lp-footer-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.lp-footer-link:hover {
+  text-decoration: underline;
+}
+
+/* ═══════════════════════════════════════════════
+   TABLET  (≤ 768px)
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .lp-hero {
+    padding: 70px 0 56px;
+  }
+
+  .lp-hero-orb {
+    width: 320px;
+    height: 320px;
+    top: -100px;
+  }
+
+  /* Stats: 2-col on tablet */
+  .lp-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Steps: 1-col on tablet */
+  .lp-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .lp-how {
+    padding: 64px 0;
+  }
+
+  .lp-cta {
+    padding: 64px 0;
+  }
+
+  .lp-footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   MOBILE  (≤ 480px)
+═══════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .lp-hero {
+    padding: 52px 0 40px;
+  }
+
+  .lp-hero-orb {
+    display: none; /* hide decorative orb on very small screens */
+  }
+
+  .lp-hero-badge {
+    margin-bottom: 16px;
+  }
+
+  .lp-hero-sub {
+    margin-bottom: 28px;
+  }
+
+  /* Stack CTA buttons vertically */
+  .lp-hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .lp-cta-primary,
+  .lp-cta-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lp-hero-proof {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  /* Stats: single column on mobile */
+  .lp-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .lp-stats {
+    padding: 36px 0;
+  }
+
+  .lp-how {
+    padding: 48px 0;
+  }
+
+  .lp-section-header {
+    margin-bottom: 32px;
+  }
+
+  .lp-step-num {
+    font-size: 36px;
+    top: 14px;
+    right: 14px;
+  }
+
+  .lp-tools {
+    padding: 40px 0;
+  }
+
+  .lp-tools-badges {
+    gap: 8px;
+  }
+
+  .lp-cta {
+    padding: 52px 0;
+  }
+
+  .lp-cta-sub {
+    margin-bottom: 24px;
+  }
+
+  .lp-footer {
+    padding: 24px 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   LARGE DESKTOP  (≥ 1200px)
+═══════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .lp-hero {
+    padding: 120px 0 100px;
+  }
+
+  .lp-stats-grid {
+    gap: 60px;
+  }
+}
