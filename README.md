@@ -2,7 +2,7 @@
 
 > Free AI tool spend auditor for startups — built as a lead-gen asset for [Credex](https://credex.rocks)
 
-**Live URL:** https://YOUR-DEPLOYMENT.vercel.app
+**Live URL:** https://spend-scan-ai.vercel.app/
 
 ## Project Structure
 
